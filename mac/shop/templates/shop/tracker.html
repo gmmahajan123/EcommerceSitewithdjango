@@ -1,0 +1,151 @@
+{% extends 'shop/basic.html' %}
+{% block title%} My Awesome Cart Tracker{% endblock %}
+{% block css %}
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@300&family=Handlee&family=Josefin+Slab:ital,wght@1,300&family=Montserrat+Alternates:ital,wght@1,300&family=Mukta:wght@200&family=Teko&family=Titillium+Web:wght@300&display=swap');
+body{
+    background-color:LightCyan;
+}
+.navbar-brand,f1{
+    font-family: 'Handlee', cursive;
+    font-weight:bold;
+    font-size:20px;
+    color:green;
+}
+.navbar-dark .navbar-brand {
+    color:Orange;
+}
+.navbar-expand-lg .navbar-collapse {
+    font-family: 'Handlee', cursive;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    color: Cyan;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color:Cyan;
+}
+a.navbar-brand{
+    padding-top:10px;
+}
+.container{
+    background-color:FloralWhite;
+}
+h2{
+    font-family: 'Handlee', cursive;
+    font-weight:bold;
+}
+.form-group{
+    font-family: 'Titillium Web', sans-serif;
+}
+#items{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight:bold;
+    font-size:20px;
+}
+#items{
+    font-family: 'Josefin Slab', serif;
+}
+#citems{
+    font-family: 'Josefin Slab', serif;
+    font-weight:bold;
+}
+.blog-footer{
+    background-color: black;
+    color: white;
+    margin-top: 12px;
+    font-family: 'Handlee', cursive;
+  }
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+        <h2>Enter your Order Id and Email address to track your order</h2>
+        <div class="my-2">
+            {% if user.is_authenticated %}
+        <form method="post" action="#" id="trackerForm">{% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputname">Order Id</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="email5" name="email5" placeholder="Email">
+                </div>
+                <button type="submit" class="btn btn-primary">Track Order</button>
+            </div>
+             {% else %}
+            <p style="font-family:Copperplate;font-size:bold;font-size: 25px;text-align: center;background-color: aquamarine;"><b>Please login first to Track Your Order</b></p>
+            {% endif %}
+>
+
+        </div>
+    </div>
+
+    <div class="col my-4">
+        <h2>Your Order Status</h2>
+        <div class="my-4">
+            <ul class="list-group" id="items">
+               <b>Enter your order Id and Email and click Track Order to find details about your order!</b>
+            </ul>
+        </div>
+        <h2>Your Order Details</h2>
+        <div class="my-4">
+            <ul class="list-group" id="citems">
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+$('#trackerForm').submit(function(event) {
+    $('#items').empty();
+    var formData = {
+        'orderId': $('input[name=orderId]').val(),
+        'email5': $('input[name=email5]').val(),
+        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+    };
+    $.ajax({
+            type: 'POST',
+            url: '/shop/tracker/',
+            data: formData,
+            encode: true
+        })
+        .done(function(data) {
+            $('#citems').empty();
+            console.log(data)
+            data = JSON.parse(data);
+            if (data['status'] == 'success') {
+                updates = data['updates'];
+                for (i = 0; i < updates.length; i++) {
+                    let text = updates[i]['text'];
+                    let time = updates[i]['time'];
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${text}
+                    <span class="badge badge-primary badge-pill">${time}</span>
+                </li>`
+                    $('#items').append(mystr);
+                }
+                // Fill in the order details
+                cart = JSON.parse(data['itemsJson']);
+                console.log(cart);
+                for (item in cart) {
+                    let name = cart[item][1];
+                    let qty = cart[item][0];
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${name}
+                    <span class="badge badge-primary badge-pill">${qty}</span>
+                </li>`
+                    $('#citems').append(mystr);
+                }
+            } else {
+                mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id and email</li>`
+                $('#items').append(mystr);
+                $('#citems').append(mystr);
+            }
+        });
+    event.preventDefault();
+});
+</script>
+{% endblock %}

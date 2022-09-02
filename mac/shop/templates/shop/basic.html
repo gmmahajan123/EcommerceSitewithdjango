@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>{% block title%} {% endblock %}</title>
+  <style>
+   {% block css %}
+
+   {% endblock %}
+
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/shop"><img
+        src='data:image/png;base64,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'
+        class="mr-2 mb-1" alt="" width="55" height="40"> <span class="f1">My Awesome Cart</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/shop"> <span class="f1">Home</span> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/about"> <span class="f1">About Us</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/tracker"> <span class="f1">Tracker</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/blog"> <span class="f1">Blog</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/contact"> <span class="f1">Contact Us</span></a>
+        </li>
+
+
+      </ul>
+      <form method='get' action='/shop/search/' class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search"
+          id="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <button type="button" class="btn btn-success mx-2" id="popcart" data-container="body" data-toggle="popover"
+        data-placement="bottom" data-html="true" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+
+
+        Cart(<span id="cart">0</span>)
+      </button>
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav mr-2">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome
+            {{request.user}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/shop/logout">Logout</a>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+    {% else %}
+    <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal">
+      Login
+    </button>
+
+    <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#signupModal">
+      SignUp
+    </button>
+    {% endif %}
+    </div>
+  </nav>
+
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message : </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+  <!-- SignUp Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/shop/signup" method='post'>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username"
+                placeholder="Choose a unique username" required>
+            </div>
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="pass1">Choose a password</label>
+              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="pass2">Confirm Password</label>
+              <input type="password" class="form-control" id="pass2" name="pass2"
+                placeholder="Enter your password again" required>
+            </div>
+
+
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block body %} {% endblock %}
+  <footer class="blog-footer text-center">
+    <p><b>My Awesome Cart</b></p>
+    <p><b>copyright &copy; 2022 All Right Reserved</b></p>
+
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+  
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/shop/login" method="post">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="loginusername" name="loginusername"
+                placeholder="Choose a unique username">
+            </div>
+            <div class="form-group">
+              <label for="pass">Enter your password </label>
+              <input type="password" class="form-control" id="loginpassword" name="loginpassword"
+                placeholder="Enter your password ">
+            </div>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+          integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+          crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+          crossorigin="anonymous"></script>
+        {% block js %} {% endblock %}
+</body>
+
+</html>

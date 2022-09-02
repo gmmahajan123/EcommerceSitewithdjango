@@ -1,0 +1,35 @@
+apps vs project.
+to cerate project you have to give command django-admin startproject name of the project.
+abd it is a first step when you create a django project before app you create a project.
+now to createc app you have to give command python manage.py startapp name of app
+
+
+now app is a pluggable web application or nthing.one project may hAVE MANY APPS AND IN MANY PROJECTS MAY HAVE ONLY ONE APP.
+
+
+
+###first of all our server comes to check in urls.py of project and then after depend upon path given in it it further response
+no suppose that you have created an app and in it you made a function index and then you have to first implement it in apps urls.py
+after this all at last you have to create an urls.py in main pproject and import include function in it.adn then you habe totll tat here 
+form which apps you want to consider.
+so simply type inclue('nameofapp') and server autmatically goest to your this app and then from apps urls.py it 
+goes furthr to viesw.py and simply print.
+
+NOTE--->
+#models.py#so our apps which present in our settings.py in project. they uses one table for storing data.so they use one table of database.
+so if we start our project with cmmand python manage.py runserver then it gives us warning that you hav 15 unapplied migrations.
+so it want to tell us that te tables which we need to make this project we did;nt make yet.so plz issue cmd by which tables formeed.
+so cmmnd is--->python manage.py migrate###it meaans that how much tables need by app so form the tables.we teell it to django that made tales.
+so after that we made database and table in odels.py.
+now we give a command that is python mamange.py makemigrations-->which stores the migration.which stored in file named 001_initial.py
+so it teels that change is occured but not write this in database just is store in migrations.here change is product table is aded.
+which we have to with this table that ork is later.
+now we want thart storred migrations will to apply.so we give cmd-->python manage.py migrate
+means which migrations we made stored them in database.
+now it means that sqllite table is writed.
+simplyy we can say that te make migratons comman create the migration file in particular app or project and futher by  migrate command
+the files which are in migrations file actually migrate into database.
+so how we check that it is write how to test tit?
+so we test it by admin panel.
+so first when you open the admin super user panel then there you on;t see your table producyt nwhich you created.
+<i class="fa-solid fa-badge-check"></i>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to payment Gateway</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arima:wght@300&family=Handlee&family=Josefin+Slab:ital,wght@1,300&family=Montserrat+Alternates:ital,wght@1,300&family=Mukta:wght@200&family=Teko&family=Titillium+Web:wght@300&display=swap');
+
+        body {
+          background-color: LightCyan;
+
+
+
+        }
+        .box img{
+            margin-top: 20px;
+            margin-bottom: 60px;
+            margin-right: 80px;
+
+            margin-left: 45%;
+            border-radius: 30%;
+    
+    
+
+
+        }
+        h5{
+            color: orangered;
+        }
+
+        .center {
+            font-family: 'Handlee';
+            position: absolute;
+            text-align: center;
+            font-size: 30px;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="https://cdn.dribbble.com/users/1751799/screenshots/5512482/check02.gif" alt="" width="180" height="170" srcset="">
+        </div>
+        <div class="center">
+            <input type="hidden" name="amount" id="amount">
+            <input type="hidden" name="itemsJson" id="itemsJson">
+            <input type="hidden" name="name" id="name">
+            <input type="hidden" name="email" id="email">
+            <input type="hidden" name="phone" id="phone">
+            <input type="hidden" name="city" id="city">
+            <input type="hidden" name="state" id="state">
+            <input type="hidden" name="zipcode" id="zipcode">
+            <input type="hidden" name="address1" id="address1">
+            <input type="hidden" name="address2" id="address2">
+            <h3>
+                <b> Congratulation.Your Order is placed Successfully.!</b> <i class="fas fa-check-circle"></i>
+            </h3>
+            <h4><b>'Thanks for ordering with us. Your order id is {{ids}}. Use it to track your order using our order
+                    tracker'</b></h4>
+            <h5><b> Want to Shop Again?</b>
+                <a href="http://127.0.0.1:8000/">
+                    Click Here!
+                </a>
+            </h5>
+        </div>
+    </div>
+</body>
+<script>
+    {% if thanks %}
+    alert('Thanks for ordering with us.Your order id is {{ids}} Use it to track your order using our order tracker');
+     localStorage.clear();
+    //document.location = "/shop";
+    {% endif %}
+</script>
+<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+</html>

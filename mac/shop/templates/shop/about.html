@@ -1,0 +1,111 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} About Us{% endblock %}
+{% block css %}
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@300&family=Handlee&family=Josefin+Slab:ital,wght@1,300&family=Montserrat+Alternates:ital,wght@1,300&family=Teko&family=Titillium+Web:wght@300&display=swap');
+body{
+  background-color:LightCyan;
+}
+.navbar-brand,f1{
+  font-family: 'Handlee', cursive;
+  font-weight:bold;
+  font-size:20px;
+  color:green;
+}
+.navbar-dark .navbar-brand {
+  color:Orange;
+}
+.navbar-expand-lg .navbar-collapse {
+  font-family: 'Handlee', cursive;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+  color: Cyan;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color:Cyan;
+}
+a.navbar-brand{
+  padding-top:10px;
+}
+.jumbotron{
+  background-color:LightCyan;
+}
+
+.container{
+  background-color:LavenderBlush;
+}
+.blog-footer{
+  background-color: black;
+  color: white;
+  margin-top: 12px;
+  font-family: 'Handlee', cursive;
+}
+.display-3{
+  font-family: 'Josefin Slab', serif;
+  font-weight:bold;
+  color:green;
+  border-bottom:2px solid green;
+}
+.container p{
+  font-family: 'Arima', cursive;
+  font-weight:bold;
+}
+h2{
+  font-family: 'Handlee', cursive;
+  color:green;
+  font-size:35px;
+  border-bottom:2px solid green;
+}
+{% endblock %}
+{% block body %}
+
+
+
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">My Awesome Cart!</h1>
+      <p>My Awesome Cart Pvt Ltd. is an Indian electronic commerce company based in Bengaluru, India. Founded by Sachin Bansal and Binny Bansal in 2007, the company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, and lifestyle products.
+
+The service competes primarily with Amazon' s Indian subsidiary, and the domestic rival Snapdeal.[5][6] as of March 2017, Flipkart held a 39.5% market share of India's e-commerce industry.[7] Flipkart is significantly dominant in the sale of apparel (a position that was bolstered by its acquisitions of Myntra and Jabong.com), and was described as being "neck and neck" with Amazon in the sale of electronics and mobile phones.[8] Flipkart also owns PhonePe, a mobile payments service based on the Unified Payments Interface (UPI).
+
+In August 2018, U.S.-based retail chain Walmart acquired a 77% controlling stake in Flipkart for US$16 billion, valuing it at $22 billion.</p>
+      <p><a class="btn btn-success btn-sm" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Developer</h2>
+        <p>Developer Name is Gaurav Mahajan and he is from Himachal,india.He done his Graduation in 2022 from Govt clg in Shimla and during his training period he developed this website. </p>
+        <p><a class="btn btn-success btn-sm" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Headquaraters</h2>
+        <p>Our main headquarters is in Bengaluru and from there all work is handled and also our many centres which we opened in many cities of India for ex Chennai,Delhi,Jaipur,Lucknow,Kolkata,Ahmedabad </p>
+        <p><a class="btn btn-success btn-sm" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Deals in</h2>
+        <p>Currently we deals in category of products like:->Electonics items,fashion men,watches,mobile phones,laptops etc. and as our company growing we look further for deals in more products. </p>
+        <p><a class="btn btn-success btn-sm" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+
+
+
+
+{% endblock %}

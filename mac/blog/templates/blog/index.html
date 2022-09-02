@@ -1,0 +1,83 @@
+{%extends 'blog/basic.html'%}
+{% block title%}Welcome to the blog section {% endblock %}
+{% block css %}
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@300&family=Teko&family=Titillium+Web:wght@300&display=swap');
+body{
+  background-color:LightCyan;
+}
+.navbar-brand,f1{
+  font-family: 'Handlee', cursive;
+  font-weight:bold;
+  font-size:20px;
+  color:green;
+}
+.navbar-dark .navbar-brand {
+  color:Orange;
+}
+.navbar-expand-lg .navbar-collapse {
+  font-family: 'Handlee', cursive;
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+  color: Cyan;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color:Cyan;
+}
+a.navbar-brand{
+  padding-top:10px;
+}
+.container{
+  background-color:GhostWhite;
+}
+.d-inline-block{
+  font-family: 'Arima', cursive;
+  border-bottom:2px solid aqua;
+  font-weight:bold;
+  font-size:20px;
+}
+.blog-footer{
+  background-color: black;
+  color: white;
+  margin-top: 12px;
+}
+.mb-0{
+  font-family: 'Teko', sans-serif;
+  border-bottom:2px solid black;
+  display:inline;
+
+}
+h5{
+  font-family: 'Titillium Web', sans-serif;
+  font-size:22px;
+}
+{% endblock %}
+
+{%block body%}
+<div class="container mt-3">
+<div class="row my-2">
+      {% for item in myposts %}
+
+
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary"><b>{{item.head0}}</b></strong>
+          <h3 class="mb-0">{{item.tilte}}</h3>
+          <p class="card-text mb-auto"><h5>{{item.head1}}</h5></p>
+          <a href="blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>
+
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/media/{{item.thumbnail}}"class="bd-placeholder-img" width="200" height="250"  aria-label="Placeholder: Thumbnail"></img>
+        </div>
+      </div>
+    </div>
+{% if forloop.counter|divisibleby:2%}
+  </div><div class="row my-2">
+  {%endif%}
+
+  {%endfor%}</div>
+
+
+  </div>
+{%endblock%}
